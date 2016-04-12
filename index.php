@@ -79,3 +79,9 @@ email adres
 	</form>
 </body>
 </html>
+
+<!-----
+else if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
+        $EmailMessage = "Het ingevoerde Email adres is ongeldig.";
+        $toonEmail = false;
+        --->
