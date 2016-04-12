@@ -15,7 +15,7 @@ email adres
     	$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
     	$tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
         $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
-        $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+        $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
     
     	$_SESSION["first_name"] = $first_name;
     	$_SESSION["last_name"] = $last_name;
@@ -30,6 +30,11 @@ email adres
         if (empty($email)){
             $error[2] = "Vul een email-adres in:";
         }
+
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error[3] = "Het ingevoerde Email adres is ongeldig.";
+    }
+        
         if (empty($error)){
              header("Location:afgehandeld.php");
         } //todo: dit naar mail.
@@ -70,18 +75,17 @@ email adres
         <br>
         <h3>contactgegevens</h3>
         <p>Email*</p>
-        <p class="error"><?php
+        
+    	<input type="email" name="email" placeholder="email-adres" value="<?php echo $email; ?>">
+    	<p class="error"><?php
             if (isset($_POST['submit']) AND isset($error[2])){echo $error[2];}
             ?></p>
-    	<input type="email" name="email" placeholder="email-adres" value="<?php echo $email; ?>">
+            <p class="error"><?php
+            if (isset($_POST['submit']) AND isset($error[3]) AND(!isset($error[2]))){echo $error[3];}
+            ?></p>
     	<br>
     	<input type="submit" value="verstuur aanvraag" name="submit">
 	</form>
 </body>
 </html>
 
-<!-----
-else if (!filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-        $EmailMessage = "Het ingevoerde Email adres is ongeldig.";
-        $toonEmail = false;
-        --->
