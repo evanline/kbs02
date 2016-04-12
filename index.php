@@ -6,6 +6,9 @@ email adres
  -->
 
 <?php 
+
+
+
 	$_SESSION["first_name"] = NULL;
 	$_SESSION["tussenvoegsel"] = NULL;
     $_SESSION["last_name"] = NULL;
@@ -45,6 +48,8 @@ email adres
     	$last_name = "";
     	$email = "";
     }
+	
+	include 'mailcheck.php';
 ?>
 <html>
 <head>
@@ -56,7 +61,7 @@ email adres
 	<h1 class='titel'>Vraag uw brochure aan!</h1>
 
 	<br>
-	<form method = 'post' action = '/index.php' class = "form">
+	<form method = 'post' action = '/mailcheck.php' class = "form">
 		<h3>Persoonsgegevens</h3>
 		<p >Voornaam*</p>
         <input type="text" name="first_name" placeholder="voornaam" value="<?php echo $first_name; ?>"> 
