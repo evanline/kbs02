@@ -1,0 +1,27 @@
+body {
+	margin: 20px;
+	background-color: #d1ecfa;
+	font-family: 'Ubuntu', sans-serif;
+}
+h1 {
+	color:darkblue;
+	margin: 10px;
+	font-family: 'Ubuntu', sans-serif;
+	padding: 10px;
+}
+p {
+	color: mediumslateblue;
+	padding-bottom: 0px;
+	font-weight: bold;
+
+}
+.titel{
+	text-align: center;
+	border: 5px groove grey;
+}
+.form{
+		font-family: 'Ubuntu', sans-serif;
+}
+.error{
+	color: #ff0000 ;
+}
