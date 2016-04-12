@@ -7,11 +7,13 @@ email adres
 
 <?php 
 	$_SESSION["first_name"] = NULL;
+	$_SESSION["tussenvoegsel"] = NULL;
     $_SESSION["last_name"] = NULL;
     $_SESSION["email"] = NULL;
 
     if (isset($_POST['submit'])){
     	$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
+    	$tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
         $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
         $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     
@@ -34,6 +36,7 @@ email adres
 
     } else {
     	$first_name = "";
+    	$tussenvoegsel = "";
     	$last_name = "";
     	$email = "";
     }
@@ -47,26 +50,33 @@ email adres
 <body>
 	<h1 class='titel'>Vraag uw brochure aan!</h1>
 
-	<form method = 'post' action = '/index.php'>
-		<p class='form'>Naam:</p>
+	<br>
+	<form method = 'post' action = '/index.php' class = "form">
+		<h3>Persoonsgegevens</h3>
+		<p >Voornaam*</p>
+        <input type="text" name="first_name" placeholder="voornaam" value="<?php echo $first_name; ?>"> 
         <p class="error"><?php
             if (isset($_POST['submit']) AND isset($error[0])){echo $error[0];} 
-            ?></p>
-        <p class="error"><?php
-            if (isset($_POST['submit']) AND isset($error[1])){echo $error[1];} 
-            ?></p>
-        <input type="text" name="first_name" placeholder="voornaam" value="<?php echo $first_name; ?>"> 
+        ?></p>
+        
+        <p >Tussenvoegsel</p>
+        <input type="text" name="tussenvoegsel" placeholder="tussenvoegsel" value="<?php echo $tussenvoegsel; ?>">
+        <p>Achernaam*</p>
         <input type="text" name="last_name" placeholder="achternaam" value="<?php echo $last_name; ?>">
         <br>
-
-        <p class='form'>Email</p>
+        <p class="error"><?php
+            if (isset($_POST['submit']) AND isset($error[1])){echo $error[1];} 
+        ?></p>
+        <br>
+        <h3>contactgegevens</h3>
+        <p>Email*</p>
         <p class="error"><?php
             if (isset($_POST['submit']) AND isset($error[2])){echo $error[2];}
             ?></p>
     	<input type="email" name="email" placeholder="email-adres" value="<?php echo $email; ?>">
     	<br>
 
-    	<input class= "form" type="submit" value="verstuur aanvraag" name="submit">
+    	<inputtype="submit" value="verstuur aanvraag" name="submit">
 	</form>
 </body>
 </html>

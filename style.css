@@ -10,7 +10,7 @@ h1 {
 	padding: 10px;
 }
 p {
-	color: mediumslateblue;
+	color: #3819e6;
 	padding-bottom: 0px;
 	font-weight: bold;
 
@@ -19,8 +19,11 @@ p {
 	text-align: center;
 	border: 5px groove grey;
 }
-.form{
-		font-family: 'Ubuntu', sans-serif;
+.form {
+	font-family: 'Ubuntu', sans-serif;
+	border: 2px double darkgrey;
+	padding-bottom: 20px;
+	text-align: center;
 }
 .error{
 	color: #ff0000 ;
