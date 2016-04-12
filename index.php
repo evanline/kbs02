@@ -75,8 +75,7 @@ email adres
             ?></p>
     	<input type="email" name="email" placeholder="email-adres" value="<?php echo $email; ?>">
     	<br>
-
-    	<inputtype="submit" value="verstuur aanvraag" name="submit">
+    	<input type="submit" value="verstuur aanvraag" name="submit">
 	</form>
 </body>
 </html>
