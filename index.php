@@ -39,7 +39,7 @@ email adres
     }
         
         if (empty($error)){
-             header("Location:afgehandeld.php");
+             header("Location:mailchecker.php");
         } //todo: dit naar mail.
 
     } else {
@@ -61,7 +61,7 @@ email adres
 	<h1 class='titel'>Vraag uw brochure aan!</h1>
 
 	<br>
-	<form method = 'post' action = '/mailcheck.php' class = "form">
+	<form method = 'post' action = 'index.php' class = "form">
 		<h3>Persoonsgegevens</h3>
 		<p >Voornaam*</p>
         <input type="text" name="first_name" placeholder="voornaam" value="<?php echo $first_name; ?>"> 
