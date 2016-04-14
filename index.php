@@ -7,6 +7,10 @@ email adres
 
 <?php 
 
+    global $first_name ;
+    global $tussenvoegsel;
+    global $last_name;
+    global $email;
 
 
 	$_SESSION["first_name"] = NULL;
@@ -39,7 +43,7 @@ email adres
     }
         
         if (empty($error)){
-             header("Location:mailchecker.php");
+             header("Location:afgehandeld.php");
         } //todo: dit naar mail.
 
     } else {
@@ -49,7 +53,6 @@ email adres
     	$email = "";
     }
 	
-	include 'mailcheck.php';
 ?>
 <html>
 <head>
