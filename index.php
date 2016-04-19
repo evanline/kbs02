@@ -81,7 +81,7 @@ email adres
             if (isset($_POST['submit']) AND isset($error[1])){echo $error[1];} 
         ?></p>
         <br>
-        <h3>contactgegevens</h3>
+        <h3>Contactgegevens</h3>
         <p>Email*</p>
         
     	<input type="email" name="email" placeholder="email-adres" value="<?php echo $email; ?>">

@@ -1,20 +1,23 @@
 <?php
-/* 	note: dit kan ingesteld worden wanneer de mail-server gereed is.
-
+/* 	
+	*****************************************************************************************
+	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
+	*****************************************************************************************
             require_once 'swiftmailer/lib/swift_required.php';
 
             //SMTP (Simple Mail Transfer Protocol) server word opgevraagd met de bijbehorende login gegevens
             //todo: veranderen
-            $smtp_host_ip = gethostbyname('smtp.gmail.com');
-            $transport = Swift_SmtpTransport::newInstance($smtp_host_ip, 465, 'ssl')
+			
+            $transport = Swift_SmtpTransport::newInstance(, 25, 'ssl')
                     ->setUsername('')
                     ->setPassword('');
 
             $mailer = Swift_Mailer::newInstance($transport);
 
             //De mail bij de brochure
+			
             $mail = $email;
-//            $text = '<p> Beste ' . $first_name . " " . $last_name ', </p>'.' <br> '.'<p> bedankt voor het aanvragen van onze brochure. </p> '.' <br> '.' <p> Groeten, </p> '.' <br> '.' <p> Bedrijf X. </p>';
+//          $text = '<p> Beste ' . $first_name . " " . if(!empty($tussenvoegsel)) { echo $tussenvoegsel;} ." " $last_name ', </p>'.' <br> '.'<p> bedankt voor het aanvragen van onze brochure. </p> '.' <br> '.' <p> Groeten, </p> '.' <br> '.' <p> Bedrijf X. </p>';
             $text = '<p> Gefeliciteerd. het werkt! </p>';
             //Er wordt een mail verstuurd met een onderwerp, naar een opgegeven mail adres, van jou mail
             //adres met het bijbehorende bericht
