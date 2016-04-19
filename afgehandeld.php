@@ -8,7 +8,7 @@
             //SMTP (Simple Mail Transfer Protocol) server word opgevraagd met de bijbehorende login gegevens
             //todo: veranderen
 			
-            $transport = Swift_SmtpTransport::newInstance(, 25, 'ssl')
+            $transport = Swift_SmtpTransport::newInstance(, 25, 'tls')
                     ->setUsername('')
                     ->setPassword('');
 
@@ -25,7 +25,16 @@
                     ->setFrom(array('' => 'TEST')) //todo: verander mailadres
                     ->setTo(array($mail))
                     ->setBody($text, 'text/html');
+			
+			
+			// Create your file contents in the normal way, but don't write them to disk
+				$data = fopen("brochure.pdf", "w")
 
+			// Create the attachment with your data
+				$attachment = Swift_Attachment::newInstance($data, 'my-file.pdf', 'application/pdf');
+
+			// Attach it to the message
+				$message->attach($attachment);
             $result = $mailer->send($message);
     */
 ?>
