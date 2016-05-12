@@ -6,7 +6,7 @@ email adres
  -->
 
 <?php 
-
+include 'afgehandeld.php'
     global $first_name ;
     global $tussenvoegsel;
     global $last_name;

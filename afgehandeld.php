@@ -1,40 +1,37 @@
 <?php
-	*****************************************************************************************
+/*	*****************************************************************************************
 	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
-	*****************************************************************************************
-            require_once 'swiftmailer/lib/swift_required.php';
+	***************************************************************************************** */
+            include 'lib/swift_required.php';
 
-            //SMTP (Simple Mail Transfer Protocol) server word opgevraagd met de bijbehorende login gegevens
-            //todo: veranderen
-			
-            $transport = Swift_SmtpTransport::newInstance(mail.wtj01.com, 25)
-                    ->setUsername('WTJ01admin')
-                    ->setPassword('Kaasplankje09');
+// Create the Transport
+$transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
+  ->setUsername('wtj01admin')
+  ->setPassword('Kaasplankje09')
+  ;
 
-            $mailer = Swift_Mailer::newInstance($transport);
+/*
+You could alternatively use a different transport such as Sendmail or Mail:
 
-            //De mail bij de brochure
-			
-            $mail = $email;
-//          $text = '<p> Beste ' . $first_name . " " . if(!empty($tussenvoegsel)) { echo $tussenvoegsel;} ." " $last_name ', </p>'.' <br> '.'<p> bedankt voor het aanvragen van onze brochure. </p> '.' <br> '.' <p> Groeten, </p> '.' <br> '.' <p> Bedrijf X. </p>';
-            $text = '<p> Gefeliciteerd. het werkt! </p>';
-            //Er wordt een mail verstuurd met een onderwerp, naar een opgegeven mail adres, van jou mail
-            //adres met het bijbehorende bericht
-            $message = Swift_Message::newInstance('Brochure')
-                    ->setFrom(array('' => 'TEST')) //todo: verander mailadres
-                    ->setTo(array($mail))
-                    ->setBody($text, 'text/html');
-			
-			
-			// Create your file contents in the normal way, but don't write them to disk
-				$data = fopen("brochure.pdf", "w")
+// Sendmail
+$transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
 
-			// Create the attachment with your data
-				$attachment = Swift_Attachment::newInstance($data, 'my-file.pdf', 'application/pdf');
+// Mail
+$transport = Swift_MailTransport::newInstance();
+*/
 
-			// Attach it to the message
-				$message->attach($attachment);
-            $result = $mailer->send($message);
+// Create the Mailer using your created Transport
+$mailer = Swift_Mailer::newInstance($transport);
+
+// Create a message
+$message = Swift_Message::newInstance('Wonderful Subject')
+  ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
+  ->setTo(array($email =>'name'))
+  ->setBody('look! a message')
+  ;
+
+// Send the message
+$result = $mailer->send($message);
 ?>
 
 <html>
