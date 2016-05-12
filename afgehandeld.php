@@ -1,5 +1,4 @@
 <?php
-/* 	
 	*****************************************************************************************
 	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
 	*****************************************************************************************
@@ -8,9 +7,9 @@
             //SMTP (Simple Mail Transfer Protocol) server word opgevraagd met de bijbehorende login gegevens
             //todo: veranderen
 			
-            $transport = Swift_SmtpTransport::newInstance(, 25, 'tls')
-                    ->setUsername('')
-                    ->setPassword('');
+            $transport = Swift_SmtpTransport::newInstance(mail.wtj01.com, 25)
+                    ->setUsername('WTJ01admin')
+                    ->setPassword('Kaasplankje09');
 
             $mailer = Swift_Mailer::newInstance($transport);
 
@@ -36,7 +35,6 @@
 			// Attach it to the message
 				$message->attach($attachment);
             $result = $mailer->send($message);
-    */
 ?>
 
 <html>
