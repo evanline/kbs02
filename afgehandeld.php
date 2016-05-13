@@ -1,37 +1,37 @@
 <?php
-   include 'lib/swift_required.php';
+/*	*****************************************************************************************
+	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
+	***************************************************************************************** */
+            include 'lib/swift_required.php';
+
+// Create the Transport
+$transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
+  ->setUsername('wtj01admin')
+  ->setPassword('Kaasplankje09')
+  ;
 
 /*
-   // Create the Transport
-   $transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
-     ->setUsername('wtj01admin')
-     ->setPassword('Kaasplankje09')
-   ;
-   // Create the Mailer using your created Transport
-   $mailer = Swift_Mailer::newInstance($transport);
+You could alternatively use a different transport such as Sendmail or Mail:
 
-   // Create a message
-   $message = Swift_Message::newInstance('Wonderful Subject')
-     ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
-     ->setTo(array($email =>'name'))
-     ->setBody("You've got mail!")
-   ;
+// Sendmail
+$transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
 
-   // Send the message
-   $result = $mailer->send($message);
-   */
-   $transport = Swift_MailTransport::newInstance();
+// Mail
+$transport = Swift_MailTransport::newInstance();
+*/
 
-   $message = Swift_Message::newInstance();
-   $message->setTo(array(
-      $email => $first_name
-      ));
-   $message->setSubject("Look! An email!");
-   $message->setBody("IT WORKED. NOW CELEBRATE!");
-   $message->setFrom("wtj01admin@mail.wtj01.com", "admin");
+// Create the Mailer using your created Transport
+$mailer = Swift_Mailer::newInstance($transport);
 
-   $mailer = Swift_Mailer::newInstance($transport);
-   $mailer->send($message);
+// Create a message
+$message = Swift_Message::newInstance('Wonderful Subject')
+  ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
+  ->setTo(array($email =>'name'))
+  ->setBody('look! a message')
+  ;
+
+// Send the message
+$result = $mailer->send($message);
 ?>
 
 <html>
