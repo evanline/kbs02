@@ -6,23 +6,23 @@ email adres
  -->
 
 <?php 
-// Variabelen die overal toegankelijk zijn voor elk php script 
-    global $first_name ;
+require_once 'afgehandeld.php"';
+    global $first_name;
     global $tussenvoegsel;
     global $last_name;
     global $email;
 
-// Sessie variabelen worden op NULL gezet wanneer de PHP wordt gestart
-    $_SESSION["first_name"] = NULL;
-    $_SESSION["tussenvoegsel"] = NULL;
-    $_SESSION["last_name"] = NULL;
-    $_SESSION["email"] = NULL;
-// Als er op submit wordt gedrukt van het formulier
+
+$_SESSION["first_name"] = NULL;
+$_SESSION["tussenvoegsel"] = NULL;
+$_SESSION["last_name"] = NULL;
+$_SESSION["email"] = NULL;
+
     if (isset($_POST['submit'])){
-    	$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
-    	$tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
-        $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
-        $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+    $first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
+    $tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
+    $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
+    $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
     
     	$_SESSION["first_name"] = $first_name;
     	$_SESSION["last_name"] = $last_name;
@@ -78,11 +78,11 @@ email adres
         <input type="text" name="last_name" placeholder="achternaam" value="<?php echo $last_name; ?>">
         <br>
         <p class="error"><?php
+            if (isset($_POST['submit']) AND isset($error[1])){echo $error[1];} 
         ?></p>
         <br>
         <h3>Contactgegevens</h3>
         <p>Email*</p>
-            if (isset($_POST['submit']) AND isset($error[1])){echo $error[1];} 
         
     	<input type="email" name="email" placeholder="email-adres" value="<?php echo $email; ?>">
     	<p class="error"><?php
