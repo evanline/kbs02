@@ -1,37 +1,37 @@
 <?php
-/*	*****************************************************************************************
-	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
-	***************************************************************************************** */
-            include 'lib/swift_required.php';
-
-// Create the Transport
-$transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
-  ->setUsername('wtj01admin')
-  ->setPassword('Kaasplankje09')
-  ;
+   include 'lib/swift_required.php';
 
 /*
-You could alternatively use a different transport such as Sendmail or Mail:
+   // Create the Transport
+   $transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
+     ->setUsername('wtj01admin')
+     ->setPassword('Kaasplankje09')
+   ;
+   // Create the Mailer using your created Transport
+   $mailer = Swift_Mailer::newInstance($transport);
 
-// Sendmail
-$transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+   // Create a message
+   $message = Swift_Message::newInstance('Wonderful Subject')
+     ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
+     ->setTo(array($email =>'name'))
+     ->setBody("You've got mail!")
+   ;
 
-// Mail
-$transport = Swift_MailTransport::newInstance();
-*/
+   // Send the message
+   $result = $mailer->send($message);
+   */
+   $transport = Swift_MailTransport::newInstance();
 
-// Create the Mailer using your created Transport
-$mailer = Swift_Mailer::newInstance($transport);
+   $message = Swift_Message::newInstance();
+   $message->setTo(array(
+      $email => $first_name
+      ));
+   $message->setSubject("Look! An email!");
+   $message->setBody("IT WORKED. NOW CELEBRATE!");
+   $message->setFrom("wtj01admin@mail.wtj01.com", "admin");
 
-// Create a message
-$message = Swift_Message::newInstance('Wonderful Subject')
-  ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
-  ->setTo(array($email =>'name'))
-  ->setBody('look! a message')
-  ;
-
-// Send the message
-$result = $mailer->send($message);
+   $mailer = Swift_Mailer::newInstance($transport);
+   $mailer->send($message);
 ?>
 
 <html>
