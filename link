@@ -1,0 +1,4 @@
+http://swiftmailer.org/docs/sending.html
+"If you need to know early whether or not authentication has failed and an Exception is going to be thrown, call the start() method on the created Transport."
+
+http://www.sitepoint.com/sending-email-with-swift-mailer/
