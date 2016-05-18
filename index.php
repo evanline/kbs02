@@ -6,23 +6,25 @@ email adres
  -->
 
 <?php 
-require_once 'afgehandeld.php"';
-    global $first_name;
-    global $tussenvoegsel;
-    global $last_name;
-    global $email;
+require_once 'afgehandeld.php';
+session_start();
+
+    $first_name = NULL;
+    $tussenvoegsel = NULL;
+    $last_name = NULL;
+    $email = NULL;
 
 
-$_SESSION["first_name"] = NULL;
-$_SESSION["tussenvoegsel"] = NULL;
-$_SESSION["last_name"] = NULL;
-$_SESSION["email"] = NULL;
+	$_SESSION["first_name"] = NULL;
+	$_SESSION["tussenvoegsel"] = NULL;
+    $_SESSION["last_name"] = NULL;
+    $_SESSION["email"] = NULL;
 
     if (isset($_POST['submit'])){
-    $first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
-    $tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
-    $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
-    $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+    	$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
+    	$tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
+        $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
+        $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
     
     	$_SESSION["first_name"] = $first_name;
     	$_SESSION["last_name"] = $last_name;

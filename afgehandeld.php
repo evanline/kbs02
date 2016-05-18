@@ -3,6 +3,7 @@
 	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
 	***************************************************************************************** */
             include 'swiftmailer/lib/swift_required.php';
+			include 'index.php';
 
 // Create the Transport
 $transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
@@ -22,12 +23,13 @@ $transport = Swift_MailTransport::newInstance();
 
 // Create the Mailer using your created Transport
 $mailer = Swift_Mailer::newInstance($transport);
-$email = 'a.perdok@mail.wtj01.com';
+
 // Create a message
 $message = Swift_Message::newInstance('Wonderful Subject')
-  ->setFrom(array('wtj01admin@wtj01.com' => 'WTJ01 Admin'))
-  ->setTo(array('arjenperdok@gmail.com' => 'Arjen Perdok'))
-  ->setBody('Here is the message itself');
+  ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
+  ->setTo(array('name@mail.wtj01.com'=> $email ))
+  ->setBody('look! a message')
+  ;
 
 // Send the message
 $result = $mailer->send($message);
