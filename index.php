@@ -9,46 +9,45 @@ email adres
 require_once 'afgehandeld.php';
 session_start();
 
-    $first_name = NULL;
-    $tussenvoegsel = NULL;
-    $last_name = NULL;
-    $email = 'a.perdok@mail.wtj01.com';
-
+	$first_name = NULL;
+	$tussenvoegsel = NULL;
+	$last_name = NULL;
+	$email = 'a.perdok@mail.wtj01.com';
 
 	$_SESSION["first_name"] = NULL;
 	$_SESSION["tussenvoegsel"] = NULL;
-    $_SESSION["last_name"] = NULL;
-    $_SESSION["email"] = NULL;
+	$_SESSION["last_name"] = NULL;
+	$_SESSION["email"] = NULL;
 
-    if (isset($_POST['submit'])){
-    	$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
-    	$tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
-        $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
-        $email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
+	if (isset($_POST['submit'])){
+    		$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
+    		$tussenvoegsel = filter_input(INPUT_POST, "tussenvoegsel", FILTER_SANITIZE_STRING);
+        	$last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
+        	$email =  filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
     
-    	$_SESSION["first_name"] = $first_name;
-    	$_SESSION["last_name"] = $last_name;
-    	$_SESSION["email"] = $email;
+		$_SESSION["first_name"] = $first_name;
+    		$_SESSION["last_name"] = $last_name;
+    		$_SESSION["email"] = $email;
 
     	if (empty($first_name)){
-            $error = array('Vul een voornaam in:');
+    		$error = array('Vul een voornaam in:');
         }
         if (empty($last_name)){
-            $error[1] = "Vul een achternaam in:";
+        	$error[1] = "Vul een achternaam in:";
         }
         if (empty($email)){
-            $error[2] = "Vul een email-adres in:";
+        	$error[2] = "Vul een email-adres in:";
         }
 
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error[3] = "Het ingevoerde Email adres is ongeldig.";
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$error[3] = "Het ingevoerde Email adres is ongeldig.";
     }
         
         if (empty($error)){
              header("Location:afgehandeld.php");
         } //todo: dit naar mail.
-
-    } else {
+        
+	} else {
     	$first_name = "";
     	$tussenvoegsel = "";
     	$last_name = "";
