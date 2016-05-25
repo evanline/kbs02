@@ -6,14 +6,7 @@ email adres
  -->
 
 <?php 
-require_once 'afgehandeld.php';
 session_start();
-
-    $first_name = NULL;
-    $tussenvoegsel = NULL;
-    $last_name = NULL;
-    $email = NULL;
-
 
 	$_SESSION["first_name"] = NULL;
 	$_SESSION["tussenvoegsel"] = NULL;
@@ -45,7 +38,7 @@ session_start();
     }
         
         if (empty($error)){
-             header("Location:afgehandeld.php");
+             header("Location:index.html");
         } //todo: dit naar mail.
 
     } else {
@@ -66,7 +59,7 @@ session_start();
 	<h1 class='titel'>Vraag uw brochure aan!</h1>
 
 	<br>
-	<form method = 'post' action = 'index.php' class = "form">
+	<form method = 'post' action = 'mailer.php' class = "form">
 		<h3>Persoonsgegevens</h3>
 		<p >Voornaam*</p>
         <input type="text" name="first_name" placeholder="voornaam" value="<?php echo $first_name; ?>"> 
