@@ -3,6 +3,11 @@
 	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
 	***************************************************************************************** */
             include 'swiftmailer/lib/swift_required.php';
+<<<<<<< HEAD
+			include 'index.php';
+
+=======
+>>>>>>> refs/remotes/evanline/master
 // Create the Transport
 $transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
   ->setUsername('wtj01admin')
@@ -23,10 +28,17 @@ $transport = Swift_MailTransport::newInstance();
 $mailer = Swift_Mailer::newInstance($transport);
 
 // Create a message
+<<<<<<< HEAD
+$message = Swift_Message::newInstance('Wonderful Subject')
+  ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
+  ->setTo(array('name@mail.wtj01.com'=> $email ))
+  ->setBody('look! a message')
+=======
 $message = Swift_Message::newInstance('Brochure aanvraag')
   ->setFrom(array( 'wtj01admin@mail.wtj01.com' => 'admin'))
   ->setTo(array($email => $first_name ))
   ->setBody('Bedankt voor het aanvragen voor de brochure!')
+>>>>>>> refs/remotes/evanline/master
   ;
 
 // Send the message
