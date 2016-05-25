@@ -35,3 +35,10 @@ width:20%;
 height:100px;
 background-color:red;
 }
+
+.textalignmail {
+position:absolute;
+width:20%;
+height:200px;
+background-color:blue;
+}
