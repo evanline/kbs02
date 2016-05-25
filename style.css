@@ -28,3 +28,10 @@ p {
 .error{
 	color: #ff0000 ;
 }
+
+.textalignbox {
+position:absolute;
+width:20%;	
+height:100px;
+background-color:red;
+}
