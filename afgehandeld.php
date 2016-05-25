@@ -1,13 +1,7 @@
 <?php
-/*	*****************************************************************************************
-	********** NOTE: dit kan pas ingesteld worden wanneer de mail-server gereed is.**********
-	***************************************************************************************** */
-            include 'swiftmailer/lib/swift_required.php';
-<<<<<<< HEAD
-			include 'index.php';
 
-=======
->>>>>>> refs/remotes/evanline/master
+include 'index.php';
+
 // Create the Transport
 $transport = Swift_SmtpTransport::newInstance('mail.wtj01.com', 25)
   ->setUsername('wtj01admin')

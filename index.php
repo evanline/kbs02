@@ -6,17 +6,16 @@ email adres
  -->
 
 <?php 
-<<<<<<< HEAD
+
 session_start();
-=======
 require_once 'afgehandeld.php';
-session_start();
+
 
 	$first_name = NULL;
 	$tussenvoegsel = NULL;
 	$last_name = NULL;
-	$email = 'a.perdok@mail.wtj01.com';
->>>>>>> refs/remotes/evanline/master
+	$email = 'example@mail.wtj01.com';
+
 
 	$_SESSION["first_name"] = NULL;
 	$_SESSION["tussenvoegsel"] = NULL;
